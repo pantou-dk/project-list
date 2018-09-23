@@ -1,7 +1,7 @@
 pipeline {
   agent {
     kubernetes {
-      label any
+      label 'php'
       defaultContainer 'jnlp'
       yamlFile 'build-pod.yaml'
     }
