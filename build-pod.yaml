@@ -17,7 +17,7 @@ spec:
         - cat
       volumeMounts:
         - name: dockersocket
-          path: /var/lib/docker.sock
+          mountPath: /var/lib/docker.sock
   volumes:
     - name: dockersocket
       hostPath:
