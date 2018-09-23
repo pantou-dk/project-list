@@ -15,6 +15,8 @@ spec:
       tty: true
       command:
         - cat
+      securityContext:
+        privileged: true
       volumeMounts:
         - name: dockersocket
           mountPath: /var/lib/docker.sock
