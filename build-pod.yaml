@@ -19,8 +19,8 @@ spec:
         privileged: true
       volumeMounts:
         - name: dockersocket
-          mountPath: /var/lib/docker.sock
+          mountPath: /var/run/docker.sock
   volumes:
     - name: dockersocket
       hostPath:
-        path: /var/lib/docker.sock
+        path: /var/run/docker.sock
