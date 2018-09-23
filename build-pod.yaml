@@ -3,6 +3,7 @@ apiVersion: v1
 metadata:
   name: build-pod
 spec:
+  serviceAccount: jenkins
   containers:
     - name: php
       image: php:7
