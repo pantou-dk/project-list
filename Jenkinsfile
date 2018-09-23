@@ -18,7 +18,7 @@ pipeline {
     stage('Docker Build') {
       steps {
         container('docker') {
-          sh 'docker -v'
+          sh 'docker info'
         }
       }
     }
