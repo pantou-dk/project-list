@@ -23,7 +23,7 @@ spec:
         - name: nexuslogin
           mountPath: /root/.docker
     - name: openshift
-      image: stephen001/oc:v3.10.0
+      image: stephen001/oc:latest
       tty: true
       command:
         - cat
