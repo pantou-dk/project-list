@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: project-list
+  labels:
+    app: project-list
+spec:
+  selector:
+    app: project-list
+  ports:
+    - name: web
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
