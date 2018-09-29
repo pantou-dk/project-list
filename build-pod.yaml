@@ -22,6 +22,11 @@ spec:
           mountPath: /var/run/docker.sock
         - name: nexuslogin
           mountPath: /root/.docker
+    - name: openshift
+      image: openshift/origin-pod
+      tty: true
+      command:
+        - cat
   volumes:
     - name: dockersocket
       hostPath:
