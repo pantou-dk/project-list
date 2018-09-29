@@ -23,7 +23,7 @@ spec:
         - name: nexuslogin
           mountPath: /root/.docker
     - name: openshift
-      image: openshift/origin-pod
+      image: ebits/openshift-client:v3.10.0
       tty: true
       command:
         - cat
