@@ -18,7 +18,7 @@ pipeline {
     stage('Docker Build') {
       steps {
         container('docker') {
-          sh 'docker info'
+          docker.build('docker-releases.danelaw.co.uk/project-list:latest')
         }
       }
     }
