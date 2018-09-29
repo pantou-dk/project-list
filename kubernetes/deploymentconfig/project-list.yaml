@@ -1,0 +1,49 @@
+kind: DeploymentConfig
+apiVersion: v1
+metadata:
+  name: project-list
+  labels:
+    app: project-list
+spec:
+  replicas: 3
+  selector:
+    app: project-list
+  template:
+    metadata:
+      labels:
+        app: project-list
+    spec:
+      initContainers:
+        - name: deploy-site
+          image: docker.danelaw.co.uk/project-list:latest
+          volumeMounts:
+            - mountPath: /var/www/data
+              name: site
+      containers:
+        - name: web
+          image: nginx:latest
+          ports:
+            - name: web
+              containerPort: 8080
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /var/www/data
+              name: site
+            - mountPath: /etc/nginx/conf.d
+              name: siteconf
+        - name: php
+          image: php:7
+          ports:
+            - name: php-fpm
+              containerPort: 9000
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /var/www/data
+              name: site
+      volumes:
+        - name: siteconf
+          configMap:
+            name: project-list-siteconf
+        - name: site
+          emptyDir:
+            medium: Memory
