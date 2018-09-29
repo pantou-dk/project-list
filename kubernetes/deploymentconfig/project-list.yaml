@@ -23,10 +23,10 @@ spec:
               name: site
       containers:
         - name: web
-          image: nginx:latest
+          image: twalter/openshift-nginx:latest
           ports:
             - name: web
-              containerPort: 8080
+              containerPort: 8081
               protocol: TCP
           volumeMounts:
             - mountPath: /var/www/data
