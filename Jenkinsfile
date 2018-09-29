@@ -48,12 +48,12 @@ pipeline {
         container('openshift') {
           script {
             sh 'oc new-project project-list --display-name="Project List" --description="A listing of Danelaw projects" || true'
-            sh 'oc apply -f kubernetes/configmap/site-conf.yaml'
-            sh 'oc apply -f kubernetes/service/project-list.yaml'
-            sh 'oc apply -f kubernetes/route/project-list.yaml'
-            sh 'oc apply -f kubernetes/deploymentconfig/project-list.yaml'
-            sh 'oc rollout cancel dc/project-list || true'
-            sh 'oc rollout latest dc/project-list'
+            sh 'oc apply -n project-list -f kubernetes/configmap/site-conf.yaml'
+            sh 'oc apply -n project-list -f kubernetes/service/project-list.yaml'
+            sh 'oc apply -n project-list -f kubernetes/route/project-list.yaml'
+            sh 'oc apply -n project-list -f kubernetes/deploymentconfig/project-list.yaml'
+            sh 'oc rollout -n project-list cancel dc/project-list || true'
+            sh 'oc rollout -n project-list latest dc/project-list'
           }
         }
       }
