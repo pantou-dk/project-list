@@ -18,7 +18,9 @@ pipeline {
     stage('Docker Build') {
       steps {
         container('docker') {
-          docker.build('docker-releases.danelaw.co.uk/project-list:latest')
+          script {
+            docker.build('docker-releases.danelaw.co.uk/project-list:latest')
+          }
         }
       }
     }
