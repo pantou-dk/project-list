@@ -20,7 +20,12 @@ spec:
       volumeMounts:
         - name: dockersocket
           mountPath: /var/run/docker.sock
+        - name: nexuslogin
+          mountPath: /root/.docker
   volumes:
     - name: dockersocket
       hostPath:
         path: /var/run/docker.sock
+    - name: nexuslogin
+      configMap:
+        name: nexus-login
