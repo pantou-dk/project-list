@@ -47,7 +47,7 @@ pipeline {
       steps {
         container('openshift') {
           script {
-            sh 'oc create-project project-list'
+            sh 'oc new-project project-list --display-name="Project List" --description="A listing of Danelaw projects" || true'
             sh 'oc apply -f kubernetes/configmap/site-conf.yaml'
             sh 'oc apply -f kubernetes/service/project-list.yaml'
             sh 'oc apply -f kubernetes/route/project-list.yaml'
