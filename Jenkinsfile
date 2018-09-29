@@ -20,7 +20,20 @@ pipeline {
         container('docker') {
           script {
             docker.build('project-list:latest')
-            docker.tag('project-list:latest', 'docker-releases.danelaw.co.uk/project-list:latest')
+          }
+        }
+      }
+    }
+    
+    stage('Docker Push') {
+      when {
+        branch 'master'
+      }
+      
+      steps {
+        container('docker') {
+          script {
+            docker.build('docker-releases.danelaw.co.uk/project-list:latest').push()
           }
         }
       }
