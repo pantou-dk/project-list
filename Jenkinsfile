@@ -19,9 +19,18 @@ pipeline {
       steps {
         container('docker') {
           script {
-            docker.build('docker-releases.danelaw.co.uk/project-list:latest')
+            docker.build('project-list:latest')
+            docker.tag('project-list:latest', 'docker-releases.danelaw.co.uk/project-list:latest')
           }
         }
+      }
+    }
+  }
+  post {
+    always {
+      container('docker') {
+        sh 'docker rmi docker-releases.danelaw.co.uk/project-list:latest || true'
+        sh 'docker rmi project-list:latest || true'
       }
     }
   }
