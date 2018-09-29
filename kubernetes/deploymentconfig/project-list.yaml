@@ -8,6 +8,8 @@ spec:
   replicas: 3
   selector:
     app: project-list
+  triggers:
+    - type: ConfigChange
   template:
     metadata:
       labels:
