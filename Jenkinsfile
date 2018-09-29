@@ -38,6 +38,23 @@ pipeline {
         }
       }
     }
+    
+    stage('Deploy') {
+      when {
+        branch 'master'
+      }
+      
+      steps {
+        script {
+          def project = 'project-list'
+          createProject(project)
+          createKubernetesObjectsByType(project, 'configmap')
+          createKubernetesObjectsByType(project, 'service')
+          createKubernetesObjectsByType(project, 'route')
+          createKubernetesObjectsByType(project, 'deploymentconfig')
+        }
+      }
+    }
   }
   post {
     always {
