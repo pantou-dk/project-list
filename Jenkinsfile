@@ -52,6 +52,8 @@ pipeline {
             sh 'oc apply -f kubernetes/service/project-list.yaml'
             sh 'oc apply -f kubernetes/route/project-list.yaml'
             sh 'oc apply -f kubernetes/deploymentconfig/project-list.yaml'
+            sh 'oc deploy project-list --cancel || true'
+            sh 'oc deploy project-list --latest'
           }
         }
       }
