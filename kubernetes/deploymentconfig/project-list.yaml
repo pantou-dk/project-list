@@ -45,7 +45,7 @@ spec:
       volumes:
         - name: siteconf
           configMap:
-            name: project-list-siteconf
+            name: site-conf
         - name: site
           emptyDir:
             medium: Memory
