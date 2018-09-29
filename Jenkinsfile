@@ -47,12 +47,11 @@ pipeline {
       steps {
         container('openshift') {
           script {
-            def project = 'project-list'
-            createProject(project)
-            createKubernetesObjectsByType(project, 'configmap')
-            createKubernetesObjectsByType(project, 'service')
-            createKubernetesObjectsByType(project, 'route')
-            createKubernetesObjectsByType(project, 'deploymentconfig')
+            sh 'oc create-project project-list'
+            sh 'oc apply -f kubernetes/configmap/site-conf.yaml'
+            sh 'oc apply -f kubernetes/service/project-list.yaml'
+            sh 'oc apply -f kubernetes/route/project-list.yaml'
+            sh 'oc apply -f kubernetes/deploymentconfig/project-list.yaml'
           }
         }
       }
