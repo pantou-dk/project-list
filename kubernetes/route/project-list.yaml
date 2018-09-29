@@ -1,0 +1,15 @@
+kind: Route
+apiVersion: v1
+metadata:
+  name: project-list
+  labels:
+    app: project-list
+spec:
+  host: project-list.danelaw.co.uk
+  to:
+    kind: Service
+    name: project-list
+  port:
+    targetPort: web
+  tls:
+    termination: edge
