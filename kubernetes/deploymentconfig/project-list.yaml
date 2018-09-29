@@ -32,7 +32,7 @@ spec:
             - mountPath: /etc/nginx/conf.d
               name: siteconf
         - name: php
-          image: php:7
+          image: php:7-fpm
           ports:
             - name: php-fpm
               containerPort: 9000
